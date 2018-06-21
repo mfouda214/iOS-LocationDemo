@@ -56,10 +56,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func displayLocationDetails(placemark: CLPlacemark, location: CLLocation) {
         locationManager.stopUpdatingLocation()
-        print("Latitude: \(location.coordinate.latitude)")
-        print("Longitude: \(location.coordinate.longitude)")
-        print("Locality: \(placemark.locality!). Postal Code: \(placemark.postalCode!), Administrative Area: \(placemark.administrativeArea!), Country: \(placemark.country!)")
-    }
+        
+        let Latitude = view.viewWithTag(1) as! UILabel
+        let Longitude = view.viewWithTag(2) as! UILabel
+        let Locality = view.viewWithTag(3) as! UILabel
+        let GeoCode = view.viewWithTag(4) as! UILabel
+        
+        Latitude.isHidden = false
+        Longitude.isHidden = false
+        Locality.isHidden = false
+        GeoCode.isHidden = false
+        
+        Latitude.text = "Latitude: \(location.coordinate.latitude)"
+        Longitude.text = "Longitude: \(location.coordinate.longitude)"
+        Locality.text = "Locality: \(placemark.locality!). \nPostal Code: \(placemark.postalCode!), \nAdministrative Area: \(placemark.administrativeArea!), \nCountry: \(placemark.country!)"
+        GeoCode.text = "GeoCode: \(location)"
+        
+     }
     
 }
 
